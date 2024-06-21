@@ -148,7 +148,7 @@ const EditMovieModal = ({ movie }) => {
 
             <FormControl mb={4}>
               <FormLabel>Image URL</FormLabel>
-              <Input name="image" value={formData.image} isDisabled />
+              <Input name="image" value={formData.image} />
             </FormControl>
 
             <FormControl mb={4}>

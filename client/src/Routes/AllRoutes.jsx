@@ -2,8 +2,8 @@ import React from "react";
 import Navbar from "../Components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home";
-import MovieDetails from "../Pages/MovieDetails";
 import WatchList from "../Pages/WatchList";
+import SinglePageMovie from "../Pages/MovieDetails";
 
 const AllRoutes = () => {
   return (
@@ -11,7 +11,7 @@ const AllRoutes = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/:id" element={<MovieDetails />} />
+        <Route path="/:id" element={<SinglePageMovie />} />
         <Route path="/watchlist" element={<WatchList />} />
       </Routes>
     </div>

@@ -77,19 +77,15 @@ const AddMovieModal = ({ onAdd }) => {
 
   return (
     <>
-      <Box m={2} p={2} textAlign={"right"}>
+      <Box m={2} p={2} textAlign={"center"}>
         <Button
           onClick={onOpen}
           bg={"black"}
           color={"white"}
           p={4}
-          _hover={{ bg: "white", color: "black", border: "1px solid black" }}
         >
           {" "}
-          ADD Movie
-          <Text as="span" fontSize={"1.5rem"} ml={2}>
-            <AiFillFolderAdd />
-          </Text>
+          + Add Movie
         </Button>
       </Box>
 
@@ -185,7 +181,7 @@ const AddMovieModal = ({ onAdd }) => {
 
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={handleSubmit}>
-              Save
+              Create
             </Button>
             <Button variant="ghost" onClick={handleCancel}>
               Cancel

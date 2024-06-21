@@ -10,12 +10,8 @@ import {
   GET_MOVIE,
 } from "./actionTypes";
 
-
-
 const initialState = {
   movies: [],
-  status: "idle",
-  error: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -24,8 +20,6 @@ const reducer = (state = initialState, action) => {
     case GET_MOVIES_LOADING: {
       return {
         ...state,
-        status: "loading",
-        error: false,
       };
     }
 
@@ -33,23 +27,18 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         movies: payload,
-        status: "success",
       };
     }
 
     case GET_MOVIES_ERROR: {
       return {
         ...state,
-        status: "error",
-        error: false,
       };
     }
 
     case ADD_MOVIES_SUCCESS: {
       return {
         ...state,
-        status: "success",
-        error: false,
         movie: payload,
       };
     }
@@ -81,8 +70,6 @@ const reducer = (state = initialState, action) => {
 
     case REVIEW_UPDATE: {
       return {
-        status: "success",
-        error: null,
         movies: state.movies.map((movie) =>
           movie._id === payload.id ? payload : movie
         ),
@@ -91,8 +78,6 @@ const reducer = (state = initialState, action) => {
 
     case GET_MOVIE: {
       return {
-        status: "success",
-        error: null,
         movies: state.movies.map((movie) =>
           movie._id === payload._id ? payload : movie
         ),

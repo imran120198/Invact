@@ -18,27 +18,23 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteMovie,
-  getMovieById,
   getMoviesData,
   reviewUpdate,
   toggleWatchStatus,
-  updateMovieData,
 } from "../Redux/action";
 import { BiEdit, BiTrash, BiArrowBack } from "react-icons/bi";
 import { TbEyeUp, TbEyeX } from "react-icons/tb";
-
 import { LuFileEdit } from "react-icons/lu";
 
 import StarRatings from "../Components/StarRatings";
 import EditMovieModal from "../Components/EditMovieModal";
-import { CirclesWithBar } from "react-loader-spinner";
 
-const MovieDetails = () => {
+const SinglePageMovie = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { status, error, movies } = useSelector((store) => store.movies);
+  const movies = useSelector((store) => store.movies);
 
   const [isOpen, setIsOpen] = useState(false);
   const [reviewText, setReviewText] = useState("");
@@ -76,7 +72,8 @@ const MovieDetails = () => {
   };
 
   return (
-    <Box p={4}>
+    <Box p={4} w={"90%"} m={"auto"}>
+      <Box></Box>
       {movie ? (
         <>
           <Heading color={"yellow.600"}>{movie.title}</Heading>
@@ -84,22 +81,7 @@ const MovieDetails = () => {
             display={"flex"}
             justifyContent={"flex-start"}
             alignItems={"flex-start"}
-          >
-            <Button
-              leftIcon={<BiArrowBack />}
-              bg={"black"}
-              color={"white"}
-              p={4}
-              _hover={{
-                bg: "white",
-                color: "black",
-                border: "1px solid black",
-              }}
-              onClick={() => navigate("/")}
-            >
-              Back
-            </Button>
-          </Box>
+          ></Box>
           <Box
             display="flex"
             flexDirection={{ base: "column", md: "row" }}
@@ -146,7 +128,6 @@ const MovieDetails = () => {
 
               <Box display={"flex"} justifyContent={"flex-start"} gap={10}>
                 <Text fontSize={"1rem"} color={"green.500"} fontWeight={"bold"}>
-                  {" "}
                   Description:
                 </Text>
                 <Text
@@ -166,7 +147,6 @@ const MovieDetails = () => {
                 gap={7}
               >
                 <Text fontSize={"1rem"} color={"green.500"} fontWeight={"bold"}>
-                  {" "}
                   Watch Status:
                 </Text>
                 <IconButton
@@ -212,15 +192,22 @@ const MovieDetails = () => {
                   />
                 </Text>
               </Box>
-
-              <Box mt={4} display="flex" gap={6}>
-                <EditMovieModal movie={movie} />
-                <Button colorScheme="red" onClick={handleDelete}>
-                  <BiTrash /> Delete
-                </Button>
-              </Box>
             </Box>
           </Box>
+          <Button
+            leftIcon={<BiArrowBack />}
+            bg={"black"}
+            color={"white"}
+            p={4}
+            _hover={{
+              bg: "white",
+              color: "black",
+              border: "1px solid black",
+            }}
+            onClick={() => navigate("/")}
+          >
+            Back
+          </Button>
         </>
       ) : (
         <Box
@@ -231,18 +218,7 @@ const MovieDetails = () => {
           m={"auto"}
           h={"100vh"}
         >
-          <CirclesWithBar
-            height="20%"
-            width="100%"
-            color="#4fa94d"
-            outerCircleColor="#4fa94d"
-            innerCircleColor="#4fa94d"
-            barColor="#4fa94d"
-            ariaLabel="circles-with-bar-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-          />
+          <Text>Loading...</Text>
         </Box>
       )}
 
@@ -270,4 +246,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default SinglePageMovie;

@@ -26,7 +26,10 @@ export const addMovie = (data) => async (dispatch) => {
   dispatch({ type: GET_MOVIES_LOADING });
 
   try {
-    const res = await axios.post(`https://invact-backend.onrender.com/movie`, data);
+    const res = await axios.post(
+      `https://invact-backend.onrender.com/movie`,
+      data
+    );
     dispatch({ type: ADD_MOVIES_SUCCESS, payload: res.data });
   } catch (error) {
     console.error(
@@ -41,7 +44,10 @@ export const updateMovieData = (id, data) => async (dispatch) => {
   dispatch({ type: GET_MOVIES_LOADING });
 
   try {
-    const res = await axios.put(`https://invact-backend.onrender.com/movie/edit/${id}`, data);
+    const res = await axios.put(
+      `https://invact-backend.onrender.com/movie/edit/${id}`,
+      data
+    );
     dispatch({ type: GET_MOVIES_UPDATE, payload: res.data });
   } catch (error) {
     console.error(
@@ -52,11 +58,16 @@ export const updateMovieData = (id, data) => async (dispatch) => {
   }
 };
 
-export const reviewUpdate = (id, {reviews}) => async (dispatch) => {
+export const reviewUpdate =
+  (id, { reviews }) =>
+  async (dispatch) => {
     dispatch({ type: GET_MOVIES_LOADING });
-  
+
     try {
-      const res = await axios.patch(`https://invact-backend.onrender.com/movie/${id}/review`, {reviews});
+      const res = await axios.patch(
+        `https://invact-backend.onrender.com/movie/${id}/review`,
+        { reviews }
+      );
       dispatch({ type: REVIEW_UPDATE, payload: res.data });
     } catch (error) {
       console.error(
@@ -66,12 +77,12 @@ export const reviewUpdate = (id, {reviews}) => async (dispatch) => {
       dispatch({ type: GET_MOVIES_ERROR });
     }
   };
-  
-
 
 export const deleteMovie = (id) => async (dispatch) => {
   try {
-    let res = await axios.delete(`https://invact-backend.onrender.com/movie/delete/${id}`);
+    let res = await axios.delete(
+      `https://invact-backend.onrender.com/movie/delete/${id}`
+    );
     dispatch({ type: GET_MOVIE_DELETE, payload: id });
   } catch (e) {
     dispatch({ type: GET_MOVIES_ERROR });
@@ -93,7 +104,9 @@ export const toggleWatchStatus = (id, watchStatus) => async (dispatch) => {
 export const getMovieById = (id) => async (dispatch) => {
   dispatch({ type: GET_MOVIES_LOADING });
   try {
-    const res = await axios.get(`https://invact-backend.onrender.com/movie/${id}`);
+    const res = await axios.get(
+      `https://invact-backend.onrender.com/movie/${id}`
+    );
     dispatch({ type: GET_MOVIE, payload: res.data });
   } catch (error) {
     dispatch({ type: GET_MOVIES_ERROR });
