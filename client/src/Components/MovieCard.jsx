@@ -160,7 +160,7 @@ const MovieCard = ({ movie, onDelete, watched }) => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>reviewss</ModalHeader>
+          <ModalHeader>Reviews</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             {reviews ? (
